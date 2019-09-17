@@ -4,7 +4,7 @@
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
 
-const jnk = ["Tequila", "Penicillin", "Energy", "Across the bow"];
+const jnk = ["Tequila", "Penicillin", "Energy", "Across the Bow"];
 let redefine = [];
 
 function whatKindaShot(kind) {
@@ -25,8 +25,8 @@ function shoot(x) {
 	});
 }
 
+whatKindaShot(jnk);
 shoot(redefine);
-
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
