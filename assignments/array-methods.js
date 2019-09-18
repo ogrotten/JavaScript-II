@@ -58,28 +58,53 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach(e => {
+  fullNames.push(`${e.first_name} ${e.last_name}`) 
+});
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+firstNamesAllCaps = runners.map(e => e.first_name.toUpperCase())
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
+runnersLargeSizeShirt = runners.filter(e => e.shirt_size === "L")
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
 let ticketPriceTotal = 0;
+ticketPriceTotal = runners.reduce((acc, curr) => acc + curr.donation, 0)
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
+// function console.log (x) {console.log(x)}
+const longName = 14;
+
 // Problem 1
+// what names are too long for the shurts? 14 chars max
+let tooLong = runners.filter(e => (`${e.first_name} ${e.last_name}`).length > longName);
+console.log(tooLong)
 
 // Problem 2
+// truncate too-long names to first init and last name
+let nameTruncs = tooLong.map(e => e.full_name = `${e.first_name[0]} ${e.last_name}`)
+console.log(nameTruncs)
+console.log(tooLong)
 
 // Problem 3
+// repopulate the tooLong list by changing first names to initial like nameTruncs
+runners.forEach(e => {
+	let check = `${e.first_name} ${e.last_name}`
+	if (check.length > longName) {
+		e.first_name = e.first_name[0];
+	}
+});
+
+console.log(runners)
